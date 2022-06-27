@@ -44,10 +44,10 @@ class NoteActions {
         const title = req.body.title;
         const body = req.body.body;
 
-        const note = Note.findOne({ _id: id });
+        const note = await Note.findOne({ _id: id });
         note.title = title;
-        note.body = body
-        await note.save()
+        note.body = body;
+        await note.save();
 
         res.status(201).json(note);
     }
